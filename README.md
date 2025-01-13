@@ -86,21 +86,20 @@ This project is a **Voucher Management System** that uses Node.js, Express, and 
 ```
 project-root/
 |-- config/
-|   |-- database.js       # Database configuration
+|   |-- config.js       # Database configuration
+    |-- sequalize.js       # Database connection ORM
 |-- public/
-|   |-- styles/           # CSS files
-|   |-- scripts/          # JavaScript files
+|   |-- css/           # CSS files
+|   |-- images/          # JavaScript files
 |-- views/
 |   |-- layouts/          # EJS layouts
-|   |-- partials/         # EJS partials
+    |-- auth/          # EJS layouts
+|   
 |   |-- login.ejs         # Login page
 |   |-- dashboard.ejs     # Dashboard page
 |   |-- settings.ejs      # Settings page
 |-- routes/
 |   |-- index.js          # Application routes
-|-- utils/
-|   |-- pdfGenerator.js   # PDF generation logic
-|   |-- qrCodeGenerator.js # QR code generation logic
 |-- app.js                # Application entry point
 |-- package.json          # Dependencies and scripts
 ```

@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "sa",
+    "password": "your_password",
+    "database": "your_database_name",
+    "host": "127.0.0.1",
+    "dialect": "mssql"
+  },
+  "test": {
+    "username": "sa",
+    "password": "your_password",
+    "database": "your_test_database",
+    "host": "127.0.0.1",
+    "dialect": "mssql"
+  },
+  "production": {
+    "username": "sa",
+    "password": "your_password",
+    "database": "your_production_database",
+    "host": "127.0.0.1",
+    "dialect": "mssql"
+  }
+}

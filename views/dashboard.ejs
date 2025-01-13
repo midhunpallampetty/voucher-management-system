@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome, <%= username %></h1>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </header>
+        
+        <main>
+            <section class="qr-section">
+                <h2>Generate QR Code</h2>
+                <button id="generate-qr" class="generate-btn">Generate QR Code</button>
+                <div id="qr-code-container"></div>
+            </section>
+            
+            <section class="vouchers-section">
+                <h2>Your Vouchers</h2>
+                <% if (locals.vouchers && vouchers.length > 0) { %>
+                    <ul class="voucher-list">
+                        <% vouchers.forEach(function(voucher) { %>
+                            <li class="voucher-item">
+                                <span><%= voucher.code %></span>
+                                <span><%= voucher.expiryDate %></span>
+                            </li>
+                        <% }); %>
+                    </ul>
+                <% } else { %>
+                    <p>No vouchers available.</p>
+                <% } %>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script>
+        document.getElementById('generate-qr').addEventListener('click', function() {
+            const randomNumber = Math.floor(Math.random() * 9000000000) + 1000000000; // Generate a 10-digit random number
+            QRCode.toDataURL(randomNumber.toString(), function (err, url) {
+                if (err) {
+                    console.error(err);
+                } else {
+                    const qrContainer = document.getElementById('qr-code-container');
+                    qrContainer.innerHTML = `
+                        <img src="${url}" alt="QR Code"/>
+                        <p>Your QR Code: ${randomNumber}</p>
+                    `;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
